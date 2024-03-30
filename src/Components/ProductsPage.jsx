@@ -59,6 +59,25 @@ const ProductsPage = () => {
     setPriceSort(event.target.value);
   }
 
+  function applySorting(products) {
+    let sortedProducts = [...products];
+    if (priceSort === "low to high") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (priceSort === "high to low") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    }
+  
+    if (ratingSort === "2 and above") {
+      sortedProducts = sortedProducts.filter(product => product.rating.rate >= 2);
+    } else if (ratingSort === "3 and above") {
+      sortedProducts = sortedProducts.filter(product => product.rating.rate >= 3);
+    } else if (ratingSort === "4 and above") {
+      sortedProducts = sortedProducts.filter(product => product.rating.rate >= 4);
+    }
+  
+    return sortedProducts;
+  }
+  
   function handleRatingChange(event) {
     setRatingSort(event.target.value);
   }
@@ -92,9 +111,7 @@ const ProductsPage = () => {
     fetchProductData();
   }, []);
 
-  const filteredProducts = productData.data.filter((product) =>
-    product.title.toLowerCase().includes(inputText.toLowerCase())
-  );
+  const sortedProducts = applySorting(productData.data);
 
   return (
     <div style={{ marginTop: "60px" }}>
@@ -133,7 +150,7 @@ const ProductsPage = () => {
         mt="4"
         m="auto"
       >
-        {filteredProducts.map((product) => (
+        {sortedProducts.map((product) => (
           <GridItem key={product.id}>
             <Singleproduct {...product} />
           </GridItem>

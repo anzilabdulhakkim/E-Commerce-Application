@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Image, Text, Flex } from "@chakra-ui/react";
+import { Button, Image, Text, Grid, Flex, Box } from "@chakra-ui/react";
 import { Authcontext } from "../Context/Authcontextprovider";
 import { useToast } from "@chakra-ui/react";
 
@@ -36,24 +36,22 @@ const Singleproduct = ({ id, title, category, price, image, rating }) => {
   }
 
   return (
-    <Flex direction="column" alignItems="center" justifyContent="center" maxWidth="200px" m="20px">
-      <Image src={image} alt={title} width="150px"/>
-      <Text mt="2">{title}</Text>
-      <Text mt="2" fontWeight="bold">Rating - {rating.rate}</Text>
-      <Text mt="2">₹ {price}</Text>
-      <Flex mt="2" justifyContent="center">
-        <Button colorScheme="blue" onClick={addTocart}>Add to Cart</Button>
-        <Button
-          ml="2"
-          colorScheme="blue"
-          onClick={() => {
-            handleNavigate(id);
-          }}
-        >
+    <Box m="50px" p="5px" h="auto">
+    <Grid templateColumns="1fr" gap={5} alignItems="center" justifyContent="center" textAlign="center">
+      <Image src={image} alt={title} width="150px" height="180px" m="auto"/>
+      <Flex justifyContent="center">
+        <Text  maxH="50px" overflow="hidden" textOverflow="ellipsis">{title}</Text>
+      </Flex>
+      <Text fontWeight="bold">Rating - {rating.rate}</Text>
+      <Text >₹ {price}</Text>
+      <Grid templateColumns="1fr 1fr" gap={10} justifyContent="center">
+        <Button colorScheme="blue"  onClick={addTocart}>Add to Cart</Button>
+        <Button colorScheme="blue" onClick={() => {handleNavigate(id)}}>
           View details
         </Button>
-      </Flex>
-    </Flex>
+      </Grid>
+    </Grid>
+    </Box>
   );
 };
 

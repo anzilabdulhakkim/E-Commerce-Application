@@ -67,11 +67,11 @@ const Products = () => {
         <Skeleton height="300px" width="300px" mt={10}/>
       ) : (
         <>
-          <Image src={data.image} h="200px" mt="20px" />
-          <Text fontSize="2xl" fontWeight="bold" mt="4">
+          <Image src={data.image} h="200px" mt="50px" />
+          <Text fontSize="x-large" fontWeight="bold" mt="4" w="70%">
             {data.title}
           </Text>
-          <Text fontSize="12px" mt="2" width="50%" >
+          <Text fontSize="12px" mt="2" width="60%" >
             {data.description}
           </Text>
           <Text fontSize="lg" mt="2" fontWeight="bold">

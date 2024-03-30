@@ -34,7 +34,7 @@ const Cart = () => {
         )}
 
         {added.map((ele) => (
-          <Flex key={ele.id} alignItems="center" my="2">
+          <Flex key={ele.id} alignItems="center" my="2" w="40%">
             <Image src={ele.image} alt="" boxSize="100px" mr="4" />
             <VStack align="flex-start">
               <Text fontSize="lg">{ele.title}</Text>
